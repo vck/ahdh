@@ -1,3 +1,4 @@
 *.pyc
 /*.pyc
 ahdh-web/
+.ipynb_checkpoints/
