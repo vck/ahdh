@@ -15,24 +15,3 @@ db = mysql.connect(host=AHDH_DB_HOST,
                    passwd=AHDH_DB_PASSWORD,
                    db=AHDH_DB_NAME
 )
-
-names = [
-        "ujang", "uda", "uni", "abi", "gori"
-]
-
-query = """
-    INSERT INTO `ahdh` (`id`, `username`) VALUES ("{}", "{}");
-    """
-
-cur = db.cursor()
-
-# create ahdh table
-cur.execute("CREATE TABLES ahdh(id int NOT NULL, username varchar(20) NOT NULL);")
-db.commit()
-
-# populate table with dummy data
-for i in range(len(names)):
-    sql = query.format(i, names[i])
-    cur.execute(sql)
-    db.commit()
-db.close()
