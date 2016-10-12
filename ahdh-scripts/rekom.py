@@ -53,4 +53,4 @@ for user in data.keys():
     for users in data.keys():
         if users is not user:
             score = 1/(1+sum([pow(data[user][item] - data[users][item], 2) for item in data[user] if item in data[users]]))
-            print user, users, "skors: ", skore
+            print user, users, "skors: ", score
