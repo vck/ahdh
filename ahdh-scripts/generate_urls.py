@@ -24,7 +24,7 @@ cur = db.cursor()
 MAX_RANGE = 100
 
 # user id that will be randomly picked
-RANDOM_ID = [1, 2, 3, 4, 5]
+RANDOM_ID = (1, 2, 3, 4, 5)
 
 # generate list within range 1-99
 RANDOM_URL_ID = xrange(MAX_RANGE)
@@ -63,8 +63,16 @@ for item in xrange(MAX_RANGE):
     # set QUERY with random user_id and random url_id
     sql = QUERY.format(item, user_id, url)
 
-    # execute query
-    cur.execute(sql)
+    # if any errors
+    try:
+        # execute query
+        cur.execute(sql)
 
-    # commit changes
-    db.commit()
+        # commit changes
+        db.commit()
+    except:
+        # back to previous
+        db.rollback()
+
+# close connectin
+db.close()
